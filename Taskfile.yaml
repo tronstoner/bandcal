@@ -1,0 +1,33 @@
+---
+version: "3"
+
+tasks:
+  setup:
+    desc: Setup the project by installing dependencies for both app and api.
+    cmds:
+      - cd api && task npm:ci
+      - cd app && task npm:ci
+  start:dev:
+    desc: Start development environment using Docker Compose.
+    cmds:
+      - export DOCKERFILE_VUE=Dockerfile_dev DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up
+  start:prod:
+    desc: Start production environment using Docker Compose.
+    cmds:
+      - export DOCKERFILE_VUE=Dockerfile DOCKERFILE_API=Dockerfile && docker compose -p bandcal up
+  remove:
+    desc: Remove all Docker containers and images.
+    cmds:
+      - docker compose -p bandcal down --rmi all
+  stop:
+    desc: Stop all Docker containers without removing images.
+    cmds:
+      - docker compose -p bandcal down
+  create-test-user:
+    desc: Create a test user for nginx.
+    cmds:
+      - "read -p 'Enter username: ' username && htpasswd -c ./nginx/.htpasswd $username"
+  default:
+    desc: List all available tasks.
+    cmds:
+      - task --list

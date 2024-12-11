@@ -1,0 +1,18 @@
+---
+version: "3"
+
+vars:
+  PROJECT_DIR:
+    sh: "dirname $(realpath {{.TASKFILE_DIR}})"
+  SRC_DIR: "{{.PROJECT_DIR}}"
+
+includes:
+  npm: .taskfiles/npm.yaml
+
+tasks:
+  default:
+    desc: Show a list of all tasks.
+    aliases:
+      - help
+    cmds:
+      - task --list-all

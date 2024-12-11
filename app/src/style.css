@@ -1,0 +1,324 @@
+* {
+  font-family: Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: 0;
+}
+
+body,
+html {
+  background: #FFF;
+  margin: 0;
+  padding: 0;
+  min-width: 300px;
+}
+
+form {
+  margin-top: 1em;
+}
+
+label {
+  font-size: 88%;
+  font-weight: bold;
+  margin: 0.2rem;
+  color: #1b5f7e;
+}
+
+.calenderheader {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.calhead {
+  display: inline-block;
+  width: 40%;
+  max-width: 300px;
+  font-size: 100%;
+  color: #FFF;
+  background: #000;
+  background: #2691C4;
+  text-align: center;
+  line-height: 32px;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+a {
+  color: #336;
+  font-weight: bold;
+  text-decoration: none;
+  word-wrap: break-word;
+}
+
+a:hover {
+  color: #66A;
+  text-decoration: none;
+}
+
+.menutable,
+.maintable {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+
+td.tablemain {
+  background: #46abdb;
+  background: #8cdaff;
+  border-radius: 8px;
+}
+
+.logowrap {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.calendarWrap table {
+  background: #8CDAFF;
+}
+
+.calweekdays {
+  font-size: 100%;
+}
+
+.calendar {
+  font-size: 100%;
+  text-decoration: none;
+}
+
+.textfield,
+input,
+textarea {
+  border-style: solid;
+  border-color: #3e91c4;
+  border-width: 3px;
+  font-size: 100%;
+  text-decoration: none;
+  padding: 8px;
+  border-collapse: collapse;
+  background-color: #FFF;
+  border-radius: 8px;
+  width: 100%;
+}
+
+table td.caldate {
+  font-size: 88%;
+}
+
+.textfield {
+  height: auto;
+}
+
+.textfield a {
+  word-wrap: break-word;
+}
+
+textarea {
+  height: auto;
+  width: 100%;
+}
+
+textarea,
+textarea.textfield,
+input[type=text] {
+  border-color: #2691C4;
+  margin-bottom: 8px;
+  border-width: 3px;
+}
+
+td.caldate:hover {
+  text-decoration: none;
+  background: #2691C4;
+  color: #FFF;
+  cursor: pointer;
+}
+
+td.caldate:hover a {
+  font-weight: bold;
+  color: #FFF;
+}
+
+button {
+  font-size: 120%;
+  border: none;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-collapse: collapse;
+  background: #2691C4;
+  font-weight: bold;
+  color: #FFF;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+button.secondary {
+  background: #EEE;
+  color: #336;
+}
+
+button.danger {
+  background: #E00;
+  color: #FFF;
+}
+
+button.add {
+  margin-top: 1rem;
+}
+
+button:hover {
+  color: #FFF;
+  background: #175B7B;
+}
+
+button:disabled {
+  background: #EEE;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.menutable {
+  border-collapse: collapse;
+  padding: 0 8px;
+}
+
+a.menu {
+  font-size: 120%;
+  vertical-align: bottom;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.2em 1em;
+  border-radius: 8px 8px 0px 0px;
+  background: #EEE;
+  margin-right: 4px;
+}
+
+a.menu:hover,
+a.menu.active {
+  text-decoration: none;
+  background-color: #8cdaff;
+  color: #FFF;
+}
+
+.menu:hover,
+.menu.active {
+  color: #FFF;
+}
+
+a.menu {
+  text-decoration: none;
+}
+
+#logo {
+  font-size: 300%;
+  font-weight: bold;
+  display: block;
+  white-space: nowrap;
+  color: #46ABDB;
+  text-decoration: none;
+  padding: 0 8px 0 8px;
+  text-shadow: #E6E6E6 4px 4px 0px;
+  position: relative;
+  top: 8px;
+}
+
+.weekdays {
+  font-size: 100% !important;
+}
+
+table td.currdate {
+  background-color: #E6E6E6;
+}
+
+@media (max-width: 640px) {
+
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td {
+    /*
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+*/
+  }
+
+  table td.caldate {
+    font-size: 77%;
+  }
+
+  .weekdays {
+    font-size: 77% !important;
+  }
+
+}
+
+@media (max-width: 850px) {
+
+  .textfield a {
+    word-wrap: break-word;
+    max-width: 840px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  a.menu {
+    font-size: 100%;
+    border-radius: 3px;
+    background: #EEE;
+    margin: 0.2em 0.3em;
+    padding: 0.3em;
+    width: calc(50% - 1.2em);
+  }
+
+  .logowrap {
+    font-size: 77%;
+    display: block;
+    margin-bottom: 0.5em;
+  }
+
+  .menutable {
+    margin-bottom: 0.5em;
+  }
+
+}
+
+@media (max-width: 320px) {
+
+  .textfield a {
+    word-wrap: break-word;
+    max-width: 280px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+}
+
+@media (max-width: 319px) {
+
+  .textfield a {
+    word-wrap: break-word;
+    max-width: 280px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  a.menu {
+    border-radius: 3px;
+    background: #EEE;
+    margin: 0.2em 0.3em;
+    padding: 0.3em;
+  }
+
+}

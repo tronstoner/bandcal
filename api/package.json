@@ -1,0 +1,30 @@
+{
+  "name": "bandcal-api",
+  "private": true,
+  "version": "1.0.0",
+  "main": "src/dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "npm run build && node dist/server.js"
+  },
+  "keywords": [],
+  "author": "tronstoner",
+  "description": "",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.1.7",
+    "ts-node": "^10.9.2",
+    "typeorm": "^0.3.20",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "ts-node-dev": "^2.0.0"
+  }
+}

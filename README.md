@@ -20,9 +20,10 @@ Mostly (re-)written by AI, directed and reviewed by me.
 ## Requirements
 
 - [Taskfile](https://taskfile.dev/#/installation) for managing development tasks
-- Docker
+- [Docker](https://www.docker.com/)
+- [htpasswd](https://httpd.apache.org/docs/2.4/programs/htpasswd.html)
 
-## Start development environment
+## Installation
 
 ### Setup
 
@@ -34,12 +35,10 @@ task setup
 ### Setup a basic auth user
 
 ```bash
-htpasswd -c ./nginx/.htpasswd <username>
-
-# Enter password
+task setup-auth
 ```
 
-### Start the development environment
+## Development
 
 To start the development environment, run:
 ```bash
@@ -69,7 +68,7 @@ To remove all containers and volumes, run:
 task remove
 ```
 
-## Open the app (development and production)
+## Open the app
 
 The app will be available at [http://localhost:8081](http://localhost:8081).
 

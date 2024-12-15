@@ -7,6 +7,10 @@ tasks:
     cmds:
       - cd api && task npm:ci
       - cd app && task npm:ci
+  setup:auth:
+    desc: Create a test user for nginx.
+    cmds:
+      - "read -p 'Enter username: ' username && htpasswd -c ./nginx/.htpasswd $username"
   start:dev:
     desc: Start development environment using Docker Compose.
     cmds:
@@ -23,10 +27,6 @@ tasks:
     desc: Stop all Docker containers without removing images.
     cmds:
       - docker compose -p bandcal down
-  create-test-user:
-    desc: Create a test user for nginx.
-    cmds:
-      - "read -p 'Enter username: ' username && htpasswd -c ./nginx/.htpasswd $username"
   default:
     desc: List all available tasks.
     cmds:

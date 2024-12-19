@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nav class="menutable">
-      <div class="logowrap"><a href="/" id="logo">Proberaum</a></div>
+      <div class="logowrap">
+        <a href="/" id="logo">{{ appTitle || "Proberaum" }} </a>
+      </div>
       <a class="menu" :class="{ active: isActive('/board') }" href="/board"
         >Board</a
       >
@@ -47,6 +49,9 @@
 import "./style.css";
 import { useRoute } from "vue-router";
 import { useRouter } from "vue-router";
+
+console.log(import.meta.env.VITE_API_TITLE);
+const appTitle = import.meta.env.VITE_APP_TITLE || "Default Title";
 
 const route = useRoute();
 const router = useRouter();

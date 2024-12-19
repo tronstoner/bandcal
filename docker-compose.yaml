@@ -10,6 +10,8 @@ services:
       - bandcal-network
     volumes:
       - ./app:/app
+    environment:
+      - VUE_APP_BASE_URL=${VUE_APP_BASE_URL} # Pass VUE_APP_BASE_URL to the container
 
   api:
     build:

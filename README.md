@@ -38,6 +38,20 @@ task setup
 task setup-auth
 ```
 
+## Configuration
+
+The configuration for the API can be found in the `api/config/config.json` file. Here is an example configuration:
+
+```javascript
+{
+  "database": {
+    "file": "../db/database.sqlite"  // default
+  }
+}
+```
+
+- `database.file`: Path to the SQLite database file.
+
 ## Development
 
 To start the development environment, run:
@@ -55,6 +69,20 @@ task start:prod
 ```
 
 This will build the app and start it in production mode. This is useful for testing the app in a production-like environment.
+
+### Rebuild the app
+
+To rebuild the app, run:
+```bash
+task rebuild:app
+```
+
+### Rebuild the API
+
+To rebuild the API, run:
+```bash
+task rebuild:api
+```
 
 ### Stop the development environment
 

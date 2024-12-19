@@ -1,7 +1,8 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { AppDataSource } from "./data-source";
+import configuration, { ConfigOptions } from "./configuration";
+import { createDataSource } from "./data-source";
 import { CalendarEntry } from "./models/CalendarEntry";
 import { Message } from "./models/Message";
 import { ContactInfo } from "./models/ContactInfo";
@@ -10,9 +11,11 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+const AppDataSource = createDataSource(configuration as ConfigOptions);
+
 AppDataSource.initialize()
   .then(() => {
-    console.log("Database connected at /db/database.sqlite");
+    console.log(`Database connected at ${configuration.database.file}`);
   })
   .catch((error) => console.error(error));
 

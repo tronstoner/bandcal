@@ -27,6 +27,14 @@ tasks:
     desc: Stop all Docker containers without removing images.
     cmds:
       - docker compose -p bandcal down
+  rebuild:dev:
+    desc: Rebuild and start the app in development mode.
+    cmds:
+      - export DOCKERFILE_VUE=Dockerfile_dev DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up --build
+  rebuild:prod:
+    desc: Rebuild and start the app in production mode.
+    cmds:
+      - docker compose -p bandcal up --build
   default:
     desc: List all available tasks.
     cmds:

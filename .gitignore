@@ -1,3 +1,4 @@
+db/*.sqlite
 db/database.sqlite
 nginx/.htaccess
 nginx/.htpasswd

@@ -98,11 +98,12 @@ task remove
 
 ## Open the app
 
-The app will be available at [http://localhost:8081](http://localhost:8081).
+The app will be available at [http://localhost:8080](http://localhost:8080).
 
-The API will be available at [http://localhost:8081/api](http://localhost:8081/api).
+The API will be available at [http://localhost:8080/api](http://localhost:8080/api).
+Note that in dev mode this is a vite proxy to the API running on port 3000, in prod the proxy is nginx.
 
-API Ping: [http://localhost:8081/api/ping](http://localhost:8081/api/ping)
+API Ping: [http://localhost:8080/api/ping](http://localhost:8080/api/ping)
 
 ## TODO
 

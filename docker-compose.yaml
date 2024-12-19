@@ -7,7 +7,7 @@ services:
     container_name: vue-app
     restart: always
     ports:
-      - "8080:8080" # Map the Vue app service port correctly
+      - "8081:8081" # Map the Vue app service port correctly
     volumes:
       - ./app:/app
 
@@ -28,7 +28,7 @@ services:
     image: nginx:latest
     container_name: nginx
     ports:
-      - "8081:8081" # Ensure Nginx serves everything under localhost:8080
+      - "8080:8080" # Ensure Nginx serves everything under localhost:8080
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro

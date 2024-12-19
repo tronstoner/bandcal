@@ -12,10 +12,10 @@ export default defineConfig({
   },
   server: {
     host: "0.0.0.0", // Ensure the server is accessible externally
-    port: 80, // Vite's default dev server port
+    port: 8081, // Vite's default dev server port
     hmr: {
       host: "localhost", // The host where the HMR server is running
-      port: 8081, // The port where Nginx is listening
+      port: 8080, // The port where Nginx is listening
     },
     proxy: {
       "/api": {

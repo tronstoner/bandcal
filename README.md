@@ -70,6 +70,15 @@ task start:prod
 
 This will build the app and start it in production mode. This is useful for testing the app in a production-like environment.
 
+### Start in production mode with in a docker environment
+
+```bash
+export BANDCAL_POSTFIX=666 BANDCAL_PORT=8080 && docker compose -p bandcal${BANDCAL_POSTFIX} up
+```
+
+`BANDCAL_POSTFIX` is used to run multiple instances of the app on the same machine.
+`BANDCAL_PORT` is the port the app will be available on.
+
 ### Rebuild the app
 
 To rebuild the app, run:

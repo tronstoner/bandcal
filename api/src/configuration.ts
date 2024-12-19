@@ -13,7 +13,7 @@ try {
     fs.readFileSync("/app/config/config.json", "utf-8")
   );
 } catch (error) {
-  console.error("Error loading config/api-config.json:", error);
+  console.warn("Could not load /app/config/config.json: reverting to defaults");
 }
 
 const defaults = {

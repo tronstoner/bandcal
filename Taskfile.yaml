@@ -18,7 +18,7 @@ tasks:
   start:prod:
     desc: Start production environment using Docker Compose.
     cmds:
-      - export BANDCAL_APP_NETWORK=bandcal-network BANDCAL_DOCKERFILE_VUE=Dockerfile BANDCAL_DOCKERFILE_API=Dockerfile && docker compose -p bandcal up
+      - export BANDCAL_POSTFIX=666 BANDCAL_PORT=8080 && docker compose -p bandcal${BANDCAL_POSTFIX} up
   remove:
     desc: Remove all Docker containers and images.
     cmds:
@@ -35,16 +35,6 @@ tasks:
     desc: Rebuild and start the app in production mode.
     cmds:
       - BANDCAL_APP_NETWORK=bandcal-network && docker compose -p bandcal up --build
-  prod-test1:
-    desc: Rebuild and start the app in production mode.
-    cmds:
-      # - export BANDCAL_APP_NETWORK=bandcal-network1 && docker network create --driver bridge "$BANDCAL_APP_NETWORK" && docker compose -p bandcal1 up --build
-      - export BANDCAL_APP_NETWORK=bandcal-network1 && docker compose -p bandcal1 up --build
-  prod-test2:
-    desc: Rebuild and start the app in production mode.
-    cmds:
-      - export BANDCAL_APP_NETWORK=bandcal-network2 && docker network create --driver bridge "$BANDCAL_APP_NETWORK" && docker compose -p bandcal2 up --build
-
   default:
     desc: List all available tasks.
     cmds:

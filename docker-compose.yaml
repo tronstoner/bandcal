@@ -3,22 +3,22 @@ services:
   vue-app:
     build:
       context: ./app
-      dockerfile: ${DOCKERFILE_VUE:-Dockerfile}
-    container_name: vue-app
+      dockerfile: ${BANDCAL_DOCKERFILE_VUE:-Dockerfile}
+    container_name: vue-app${BANDCAL_POSTFIX}
     restart: always
-    ports:
-      - "8081:8081" # Map the Vue app service port correctly
+    networks:
+      - bandcal-network
     volumes:
       - ./app:/app
 
   api:
     build:
       context: ./api
-      dockerfile: ${DOCKERFILE_API:-Dockerfile}
-    container_name: api
+      dockerfile: ${BANDCAL_DOCKERFILE_API:-Dockerfile}
+    container_name: api${BANDCAL_POSTFIX}
     restart: always
-    ports:
-      - "3000:3000" # Map the API service port correctly
+    networks:
+      - bandcal-network
     volumes:
       - ./api:/app
       - ./db:/db
@@ -26,12 +26,19 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: nginx
+    container_name: nginx${BANDCAL_POSTFIX}
     ports:
-      - "8080:8080" # Ensure Nginx serves everything under localhost:8080
+      - "${BANDCAL_PORT:-8080}:8080" # Ensure Nginx serves everything under localhost:8080
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
     depends_on:
       - vue-app
       - api
+    networks:
+      - bandcal-network
+
+networks:
+  bandcal-network:
+    name: bandcal-network${BANDCAL_POSTFIX} # Dynamically set the name
+    driver: bridge

@@ -14,11 +14,11 @@ tasks:
   start:dev:
     desc: Start development environment using Docker Compose.
     cmds:
-      - export DOCKERFILE_VUE=Dockerfile_dev DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up
+      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up
   start:prod:
     desc: Start production environment using Docker Compose.
     cmds:
-      - export DOCKERFILE_VUE=Dockerfile DOCKERFILE_API=Dockerfile && docker compose -p bandcal up
+      - export BANDCAL_POSTFIX=666 BANDCAL_PORT=8080 && docker compose -p bandcal${BANDCAL_POSTFIX} up
   remove:
     desc: Remove all Docker containers and images.
     cmds:
@@ -30,11 +30,11 @@ tasks:
   rebuild:dev:
     desc: Rebuild and start the app in development mode.
     cmds:
-      - export DOCKERFILE_VUE=Dockerfile_dev DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up --build
+      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up --build
   rebuild:prod:
     desc: Rebuild and start the app in production mode.
     cmds:
-      - docker compose -p bandcal up --build
+      - BANDCAL_APP_NETWORK=bandcal-network && docker compose -p bandcal up --build
   default:
     desc: List all available tasks.
     cmds:

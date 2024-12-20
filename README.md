@@ -35,7 +35,7 @@ task setup
 ### Setup a basic auth user
 
 ```bash
-task setup-auth
+task setup:auth
 ```
 
 ## Configuration

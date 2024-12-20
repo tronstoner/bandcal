@@ -4,6 +4,10 @@ services:
     build:
       context: ./app
       dockerfile: ${BANDCAL_DOCKERFILE_VUE:-Dockerfile}
+      args:
+        VITE_BASE_PATH: ${VITE_BASE_PATH}
+        VITE_API_BASE_PATH: ${VITE_API_BASE_PATH}
+        VITE_PORT: ${VITE_PORT}
     container_name: vue-app${BANDCAL_POSTFIX}
     env_file:
       - ./.env

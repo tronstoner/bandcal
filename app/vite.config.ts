@@ -23,13 +23,6 @@ export default defineConfig(({ mode }) => {
         clientPort: Number(env.BANDCAL_PORT || "8080"), // Ensure the client connects to the correct port
         path: `${env.VITE_BASE_PATH || "/"}__hmr`, // Include base path in HMR client URL
       },
-      // proxy: {
-      //   "/api": {
-      //     target: "http://localhost:3000", // API server
-      //     changeOrigin: true,
-      //     rewrite: (path) => path.replace(/^\/api/, ""),
-      //   },
-      // },
     },
   };
 });

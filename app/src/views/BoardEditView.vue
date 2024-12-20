@@ -73,7 +73,7 @@ onMounted(() => {
 .board-edit {
   margin: 0 auto;
   padding: 1rem;
-  background: #8cdaff;
+  background: var(--background-color);
   border-radius: 8px;
 }
 

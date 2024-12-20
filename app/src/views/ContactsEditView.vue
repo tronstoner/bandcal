@@ -114,7 +114,7 @@ onMounted(() => {
 .contacts-ed {
   width: 100%;
   margin: 0 auto;
-  background-color: #8cdaff;
+  background-color: var(--background-color);
   padding: 16px;
   border-radius: 8px;
 }
@@ -144,12 +144,12 @@ button {
 }
 
 button.danger {
-  background-color: #e74c3c;
+  background-color: var(--danger-color);
   color: white;
 }
 
 button.danger:hover {
-  background-color: #c0392b;
+  background-color: var(--danger-hover-color);
 }
 
 .confirm-dialog {
@@ -158,9 +158,10 @@ button.danger:hover {
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  background: var(--dialog-background);
 }
 
 .confirm-dialog[open]::backdrop {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--dialog-backdrop);
 }
 </style>

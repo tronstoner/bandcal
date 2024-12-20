@@ -237,7 +237,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: #8cdaff;
+  background: var(--background-color);
   border-radius: 8px;
 }
 
@@ -272,8 +272,8 @@ form {
 }
 
 .message-card {
-  background: #fff;
-  border: 2px solid #8cdaff;
+  background: var(--card-background);
+  border: 2px solid var(--card-border);
   border-radius: 8px;
   padding: 1rem;
   width: 100%;
@@ -324,9 +324,10 @@ form {
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  background: var(--dialog-background);
 }
 
 .confirm-dialog[open]::backdrop {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--dialog-backdrop);
 }
 </style>

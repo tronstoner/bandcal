@@ -1,0 +1,23 @@
+:root {
+  --body-background-color: #060032;
+  --background-color: #f69a9a;
+  --button-background: #c16363;
+  --button-hover-background: #722c2c;
+  --button-color: white;
+  --active-color: #c16363;
+  --danger-color: #ff1900;
+  --danger-hover-color: #c0392b;
+  --dialog-background: #fff;
+  --dialog-backdrop: rgba(0, 0, 0, 0.5);
+  --card-background: #fff;
+  --card-border: #f69a9a;
+  --add-card-background: #f69a9a;
+  --add-card-hover-background: #c16363;
+  --menu-background: #fff;
+  --menu-active-background: #f69a9a;
+  --menu-active-color: #fff;
+  --logo-color: #fff;
+  --logo-shadow: #f69a9a;
+  --footer-background-color: transparent;
+  --footer-color: #CCC;
+}

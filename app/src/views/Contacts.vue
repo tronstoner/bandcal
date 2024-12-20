@@ -74,7 +74,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  background: #8cdaff;
+  background: var(--background-color);
   border-radius: 8px;
 }
 
@@ -101,8 +101,8 @@ h3 {
 .contact-card {
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border: 2px solid #8cdaff;
+  background: var(--card-background);
+  border: 2px solid var(--card-border);
   border-radius: 8px;
   padding: 1rem;
   width: 100%;
@@ -131,14 +131,14 @@ h3 {
   font-size: 200%;
   justify-content: center;
   align-items: center;
-  background: #2691c4;
+  background: var(--add-card-background);
   color: #fff;
   font-weight: bold;
   cursor: pointer;
 }
 
 .add-contact-card:hover {
-  background: #175b7b;
+  background: var(--add-card-hover-background);
 }
 
 .confirm-dialog {
@@ -147,17 +147,18 @@ h3 {
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  background: var(--dialog-background);
 }
 
 .confirm-dialog[open]::backdrop {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--dialog-backdrop);
 }
 
 .button {
   font-size: 100%;
   border: none;
   padding: 8px 12px;
-  background: #2691c4;
+  background: var(--add-card-background);
   font-weight: bold;
   color: #fff;
   border-radius: 6px;
@@ -165,6 +166,6 @@ h3 {
 }
 
 .button:hover {
-  background: #175b7b;
+  background: var(--add-card-hover-background);
 }
 </style>

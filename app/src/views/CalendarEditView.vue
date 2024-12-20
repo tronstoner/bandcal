@@ -73,7 +73,7 @@ const cancelEdit = () => {
 .calendar-ed {
   width: 100%;
   margin: 0 auto;
-  background-color: #8cdaff;
+  background-color: var(--background-color);
   padding: 16px;
   border-radius: 8px;
 }

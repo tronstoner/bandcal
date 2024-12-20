@@ -1,0 +1,25 @@
+:root {
+  --body-background-color: #FFF;
+  --background-color: #8cdaff;
+  --past-color: #999;
+  --past-background: #ffe4e4;
+  --button-background: #2691c4;
+  --button-hover-background: #175b7b;
+  --button-color: white;
+  --active-color: #48abdb;
+  --danger-color: #e74c3c;
+  --danger-hover-color: #c0392b;
+  --dialog-background: #fff;
+  --dialog-backdrop: rgba(0, 0, 0, 0.5);
+  --card-background: #fff;
+  --card-border: #8cdaff;
+  --add-card-background: #2691c4;
+  --add-card-hover-background: #175b7b;
+  --menu-background: #eee;
+  --menu-active-background: #8cdaff;
+  --menu-active-color: #fff;
+  --logo-color: #46abdb;
+  --logo-shadow: #e6e6e6;
+  --footer-background-color: #FFF;
+  --footer-color: #666;
+}

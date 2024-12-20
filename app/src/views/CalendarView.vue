@@ -177,7 +177,7 @@ onMounted(async () => {
 
 table {
   width: 100%;
-  background: #8cdaff;
+  background: var(--background-color);
   border-spacing: 0px; /* This sets the cellpadding */
   border-radius: 8px;
   padding: 4px;
@@ -192,11 +192,11 @@ td {
 
 td.caldate {
   border-style: solid;
-  border-color: #8cdaff;
+  border-color: var(--background-color);
   border-width: 2px;
   font-size: 88%;
   border-collapse: collapse;
-  background-color: #fff;
+  background-color: var(--dialog-background);
   border-radius: 8px;
   height: 7em;
   width: 14.28%; /* Ensure all days have equal width without fixed width */
@@ -204,32 +204,32 @@ td.caldate {
 
 td.caldate:hover {
   text-decoration: none;
-  background: #2691c4;
-  color: #fff;
+  background: var(--button-background);
+  color: var(--button-color);
   cursor: pointer;
 }
 
 td.caldate:hover a {
   font-weight: bold;
-  color: #fff;
+  color: var(--button-color);
 }
 
 td.past-date {
-  background-color: #eee;
-  color: #999;
+  background-color: var(--past-background);
+  color: var(--past-color);
 }
 
 td.other-month,
 td.other-month:hover {
   background-color: transparent;
   opacity: 0.9;
-  color: #fff;
+  color: var(--button-color);
 }
 
 td.current-day {
-  border-color: #48abdb;
-  outline: #48abdb 4px solid;
-  background-color: #fff;
+  border-color: var(--active-color);
+  outline: var(--active-color) 4px solid;
+  background-color: var(--dialog-background);
 }
 
 .calendar-head {
@@ -242,16 +242,16 @@ td.current-day {
   text-decoration: none;
   padding: 8px 12px;
   border-collapse: collapse;
-  background: #2691c4;
+  background: var(--button-background);
   font-weight: bold;
-  color: #fff;
+  color: var(--button-color);
   border-radius: 6px;
   cursor: pointer;
 }
 
 .button:hover {
-  color: #fff;
-  background: #175b7b;
+  color: var(--button-color);
+  background: var(--button-hover-background);
 }
 
 .navigation {

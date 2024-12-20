@@ -66,6 +66,9 @@ VITE_API_BASE_PATH=/api
 
 # The title of the application
 VITE_APP_TITLE="BANDCAL"
+
+# The color scheme for the application (default or alt)
+VITE_COLOR_SCHEME=default
 ```
 
 See `.env.example` and `.env.base.example` for more configuration options using different base paths (you want to serve the app under a certain path).

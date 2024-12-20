@@ -49,6 +49,12 @@
 </template>
 
 <script lang="ts" setup>
+const colorScheme = import.meta.env.VITE_COLOR_SCHEME || "default";
+if (colorScheme === "alt") {
+  import("./colors-alt.css");
+} else {
+  import("./colors.css");
+}
 import "./style.css";
 import { useRoute } from "vue-router";
 import { useRouter } from "vue-router";
@@ -84,7 +90,7 @@ const logout = () => {
 }
 body,
 html {
-  background: #fff;
+  background: var(--body-background-color);
   margin: 0;
   padding: 0;
   min-width: 300px;
@@ -113,20 +119,20 @@ a.menu {
   display: inline-block;
   padding: 0.2em 1em;
   border-radius: 8px 8px 0px 0px;
-  background: #eee;
+  background: var(--menu-background);
   margin-right: 4px;
 }
 
 a.menu:hover,
 a.menu.active {
   text-decoration: none;
-  background-color: #8cdaff;
-  color: #fff;
+  background-color: var(--menu-active-background);
+  color: var(--menu-active-color);
 }
 
 .menu:hover,
 .menu.active {
-  color: #fff;
+  color: var(--menu-active-color);
 }
 
 #logo {
@@ -134,10 +140,10 @@ a.menu.active {
   font-weight: bold;
   display: block;
   white-space: nowrap;
-  color: #46abdb;
+  color: var(--logo-color);
   text-decoration: none;
   padding: 0 8px 0 8px;
-  text-shadow: #e6e6e6 4px 4px 0px;
+  text-shadow: var(--logo-shadow) 4px 4px 0px;
   position: relative;
   top: 8px;
 }
@@ -150,16 +156,20 @@ a.menu.active {
 .footer {
   text-align: center;
   padding: 1em 0;
-  background: #fff;
-  color: #666;
+  background: var(--footer-background-color);
+  color: var(--footer-color);
   font-size: 0.8em;
+}
+
+footer a {
+  color: var(--footer-color);
 }
 
 @media (max-width: 850px) {
   a.menu {
     font-size: 100%;
     border-radius: 3px;
-    background: #eee;
+    background: var(--menu-background);
     margin: 0.2em 0.3em;
     padding: 0.3em;
     width: calc(50% - 1.2em);

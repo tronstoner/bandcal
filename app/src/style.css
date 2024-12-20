@@ -9,7 +9,7 @@
 
 body,
 html {
-  background: #FFF;
+  background: var(--body-background-color);
   margin: 0;
   padding: 0;
   min-width: 300px;
@@ -23,7 +23,7 @@ label {
   font-size: 88%;
   font-weight: bold;
   margin: 0.2rem;
-  color: #1b5f7e;
+  color: var(--logo-color);
 }
 
 .calenderheader {
@@ -37,9 +37,8 @@ label {
   width: 40%;
   max-width: 300px;
   font-size: 100%;
-  color: #FFF;
-  background: #000;
-  background: #2691C4;
+  color: var(--button-color);
+  background: var(--button-background);
   text-align: center;
   line-height: 32px;
   vertical-align: middle;
@@ -66,8 +65,7 @@ a:hover {
 }
 
 td.tablemain {
-  background: #46abdb;
-  background: #8cdaff;
+  background: var(--menu-active-background);
   border-radius: 8px;
 }
 
@@ -77,7 +75,7 @@ td.tablemain {
 }
 
 .calendarWrap table {
-  background: #8CDAFF;
+  background: var(--menu-active-background);
 }
 
 .calweekdays {
@@ -93,13 +91,13 @@ td.tablemain {
 input,
 textarea {
   border-style: solid;
-  border-color: #3e91c4;
+  border-color: var(--button-background);
   border-width: 3px;
   font-size: 100%;
   text-decoration: none;
   padding: 8px;
   border-collapse: collapse;
-  background-color: #FFF;
+  background-color: var(--dialog-background);
   border-radius: 8px;
   width: 100%;
 }
@@ -124,21 +122,21 @@ textarea {
 textarea,
 textarea.textfield,
 input[type=text] {
-  border-color: #2691C4;
+  border-color: var(--button-background);
   margin-bottom: 8px;
   border-width: 3px;
 }
 
 td.caldate:hover {
   text-decoration: none;
-  background: #2691C4;
-  color: #FFF;
+  background: var(--button-background);
+  color: var(--button-color);
   cursor: pointer;
 }
 
 td.caldate:hover a {
   font-weight: bold;
-  color: #FFF;
+  color: var(--button-color);
 }
 
 button {
@@ -147,22 +145,22 @@ button {
   text-decoration: none;
   padding: 8px 12px;
   border-collapse: collapse;
-  background: #2691C4;
+  background: var(--button-background);
   font-weight: bold;
-  color: #FFF;
+  color: var(--button-color);
   border-radius: 6px;
   cursor: pointer;
   margin-right: 0.5rem;
 }
 
 button.secondary {
-  background: #EEE;
+  background: var(--menu-background);
   color: #336;
 }
 
 button.danger {
-  background: #E00;
-  color: #FFF;
+  background: var(--danger-color);
+  color: var(--button-color);
 }
 
 button.add {
@@ -170,12 +168,12 @@ button.add {
 }
 
 button:hover {
-  color: #FFF;
-  background: #175B7B;
+  color: var(--button-color);
+  background: var(--button-hover-background);
 }
 
 button:disabled {
-  background: #EEE;
+  background: var(--menu-background);
   color: #999;
   cursor: not-allowed;
 }
@@ -192,20 +190,20 @@ a.menu {
   display: inline-block;
   padding: 0.2em 1em;
   border-radius: 8px 8px 0px 0px;
-  background: #EEE;
+  background: var(--menu-background);
   margin-right: 4px;
 }
 
 a.menu:hover,
 a.menu.active {
   text-decoration: none;
-  background-color: #8cdaff;
-  color: #FFF;
+  background-color: var(--menu-active-background);
+  color: var(--menu-active-color);
 }
 
 .menu:hover,
 .menu.active {
-  color: #FFF;
+  color: var(--menu-active-color);
 }
 
 a.menu {
@@ -217,10 +215,10 @@ a.menu {
   font-weight: bold;
   display: block;
   white-space: nowrap;
-  color: #46ABDB;
+  color: var(--logo-color);
   text-decoration: none;
   padding: 0 8px 0 8px;
-  text-shadow: #E6E6E6 4px 4px 0px;
+  text-shadow: var(--logo-shadow) 4px 4px 0px;
   position: relative;
   top: 8px;
 }
@@ -230,7 +228,7 @@ a.menu {
 }
 
 table td.currdate {
-  background-color: #E6E6E6;
+  background-color: var(--logo-shadow);
 }
 
 @media (max-width: 640px) {
@@ -274,7 +272,7 @@ table td.currdate {
   a.menu {
     font-size: 100%;
     border-radius: 3px;
-    background: #EEE;
+    background: var(--menu-background);
     margin: 0.2em 0.3em;
     padding: 0.3em;
     width: calc(50% - 1.2em);
@@ -316,7 +314,7 @@ table td.currdate {
 
   a.menu {
     border-radius: 3px;
-    background: #EEE;
+    background: var(--menu-background);
     margin: 0.2em 0.3em;
     padding: 0.3em;
   }

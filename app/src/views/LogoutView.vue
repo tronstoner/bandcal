@@ -28,20 +28,20 @@ onMounted(async () => {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #8cdaff;
+  background: var(--background-color);
 }
 
 .return-button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background: #2691c4;
-  color: white;
+  background: var(--button-background);
+  color: var(--button-color);
   text-decoration: none;
   border-radius: 4px;
 }
 
 .return-button:hover {
-  color: #fff;
-  background: #175b7b;
+  color: var(--button-color);
+  background: var(--button-hover-background);
 }
 </style>

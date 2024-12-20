@@ -30,7 +30,7 @@ tasks:
   prod:build:
     desc: Rebuild and start the app in production mode.
     cmds:
-      - docker compose -p bandcal build --no-cache
+      - docker compose -p bandcal build
   prod:build:no-cache:
     desc: Rebuild and start the app in production mode.
     cmds:

@@ -14,8 +14,12 @@ RUN export VITE_BASE_PATH=$VITE_BASE_PATH VITE_API_BASE_PATH=$VITE_API_BASE_PATH
 # Stage 2: Serve the app with Nginx
 FROM nginx:alpine
 # Only copy the dist folder from the build-stage
-COPY --from=build-stage /app/dist /etc/nginx/html/
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY nginx.conf.template /etc/nginx/nginx.conf.template
+
+RUN echo "veryfying the files in /usr/share/nginx/htmls"
+RUN ls -la /usr/share/nginx/html
+
 COPY start.sh /start.sh
 
 CMD ["/start.sh"]

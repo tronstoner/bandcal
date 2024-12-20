@@ -6,4 +6,4 @@ COPY nginx.conf.template /etc/nginx/nginx.conf.template
 # Install envsubst
 RUN apk add --no-cache gettext
 
-CMD ["/start.sh"]
+CMD ["/start-nginx.sh"]

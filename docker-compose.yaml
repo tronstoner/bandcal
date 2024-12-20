@@ -41,7 +41,7 @@ services:
     ports:
       - "${BANDCAL_PORT:-8080}:${BANDCAL_PORT:-8080}" # Ensure Nginx serves everything under localhost:8080
     volumes:
-      - ./nginx/start.sh:/start.sh:ro
+      - ./nginx/start-nginx.sh:/start-nginx.sh:ro
       - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
     depends_on:
       - vue-app

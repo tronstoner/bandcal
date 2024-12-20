@@ -20,6 +20,6 @@ COPY nginx.conf.template /etc/nginx/nginx.conf.template
 RUN echo "veryfying the files in /usr/share/nginx/htmls"
 RUN ls -la /usr/share/nginx/html
 
-COPY start.sh /start.sh
+COPY start-nginx.sh /start-nginx.sh
 
-CMD ["/start.sh"]
+CMD ["/start-nginx.sh"]

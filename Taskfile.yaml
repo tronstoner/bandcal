@@ -14,7 +14,6 @@ tasks:
   dev:start:
     desc: Start development environment using Docker Compose.
     cmds:
-      # - export BANDCAL_PORT=8080 BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up
       - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up
   dev:rebuild:
     desc: Rebuild and start the app in development mode.

@@ -2,9 +2,7 @@
   <div id="app">
     <nav class="menutable">
       <div class="logowrap">
-        <router-link to="/" id="logo">{{
-          appTitle || "Proberaum"
-        }}</router-link>
+        <router-link to="/" id="logo">{{ appTitle || "BANDCAL" }}</router-link>
       </div>
       <router-link
         class="menu"
@@ -55,8 +53,7 @@ import "./style.css";
 import { useRoute } from "vue-router";
 import { useRouter } from "vue-router";
 
-console.log(import.meta.env.VITE_API_TITLE);
-const appTitle = import.meta.env.VITE_APP_TITLE || "Default Title";
+const appTitle = import.meta.env.VITE_APP_TITLE || "BANDCAL";
 
 const route = useRoute();
 const router = useRouter();

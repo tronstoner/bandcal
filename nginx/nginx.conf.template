@@ -8,15 +8,15 @@ events {}
 
 http {
     upstream vue_app {
-        server vue-app:8081;  # Vite's dev server port and nginx prod server port
+        server vue-app:${VITE_PORT};  # Vite's dev server port and nginx prod server port
     }
 
     upstream api {
-        server api:3000;  # API server port remains 3000
+        server api:${API_PORT};  # API server port
     }
 
     server {
-        listen ${BANDCAL_PORT};  # Nginx listens on port 8080
+        listen ${BANDCAL_PORT};  # Bandcal's exposed main port
 
         # Proxy for Vue app
         location ${VITE_BASE_PATH} {

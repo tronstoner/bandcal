@@ -26,7 +26,6 @@ services:
     volumes:
       - ./api:/app
       - ./db:/db
-      - ./api/config/config.json:/app/config/config.json:ro
 
   nginx:
     build:
@@ -35,13 +34,10 @@ services:
     container_name: nginx${BANDCAL_POSTFIX}
     env_file:
       - ./.env
-    # environment:
-    #   - BANDCAL_PORT=${BANDCAL_PORT:-8080}
-    #   - VITE_BASE_PATH=${VITE_BASE_PATH:-/}
     ports:
       - "${BANDCAL_PORT:-8080}:${BANDCAL_PORT:-8080}" # Ensure Nginx serves everything under localhost:8080
     volumes:
-      # - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template:ro
+      - ./nginx/start.sh:/start.sh:ro
       - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
     depends_on:
       - vue-app

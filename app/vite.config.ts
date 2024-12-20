@@ -4,7 +4,7 @@ import vue from "@vitejs/plugin-vue";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  console.log(env);
+  console.log("ENV", env);
   return {
     base: env.VITE_BASE_PATH || "/",
     plugins: [vue()],
@@ -16,18 +16,20 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       host: "0.0.0.0", // Ensure the server is accessible externally
-      port: 8081, // Vite's default dev server port
+      port: Number(env.VITE_PORT || "8081"), // Vite's default dev server port
       hmr: {
         host: "localhost", // The host where the HMR server is running
-        port: 8080, // The port where Nginx is listening
+        port: Number(env.VITE_PORT || "8081"), // The port where Nginx is listening
+        clientPort: Number(env.BANDCAL_PORT || "8080"), // Ensure the client connects to the correct port
+        path: `${env.VITE_BASE_PATH || "/"}__hmr`, // Include base path in HMR client URL
       },
-      proxy: {
-        "/api": {
-          target: "http://localhost:3000", // API server
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
-        },
-      },
+      // proxy: {
+      //   "/api": {
+      //     target: "http://localhost:3000", // API server
+      //     changeOrigin: true,
+      //     rewrite: (path) => path.replace(/^\/api/, ""),
+      //   },
+      // },
     },
   };
 });

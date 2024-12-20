@@ -5,6 +5,7 @@ services:
       context: ./app
       dockerfile: ${BANDCAL_DOCKERFILE_VUE:-Dockerfile}
       args:
+        VITE_APP_TITLE: ${VITE_APP_TITLE:-Bandcal}
         VITE_BASE_PATH: ${VITE_BASE_PATH}
         VITE_API_BASE_PATH: ${VITE_API_BASE_PATH:-/api}
         VITE_PORT: ${VITE_PORT:-8081}

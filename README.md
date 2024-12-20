@@ -43,6 +43,9 @@ task setup:auth
 The app can be configured by setting environment variables. If you use the docker-compose setup, you will need to create .env file in the root of the project with the following content:
 
 ```env
+# The postfix for the docker-compose project of the application, becomes e.g.: `bandcal666`
+BANDCAL_POSTFIX=666
+
 # The overall port for the application
 BANDCAL_PORT=8080
 

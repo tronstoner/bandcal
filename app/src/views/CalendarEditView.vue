@@ -22,6 +22,7 @@
 import dayjs from "dayjs";
 import { ref, onMounted, computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { apiFetch } from "../utils/api";
 
 const route = useRoute();
 const router = useRouter();
@@ -34,10 +35,13 @@ onMounted(async () => {
   const date = route.params.date;
   if (date) {
     calendarEntry.value.date = Array.isArray(date) ? date[0] : date;
-    const response = await fetch(`/api/calendar/${date}`);
-    if (response.ok) {
-      const entry = await response.json();
+    try {
+      const entry = await apiFetch(`/calendar/${date}`);
       calendarEntry.value = entry;
+    } catch (error: any) {
+      if (error.response && error.response.status !== 404) {
+        console.error(error);
+      }
     }
   }
 });
@@ -52,10 +56,10 @@ const submitForm = async () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(calendarEntry.value),
   };
-  const response = await fetch(`/api/calendar`, options);
-  if (response.ok) {
+  try {
+    await apiFetch("/calendar", options);
     router.back();
-  } else {
+  } catch (error) {
     router.push("/calendar");
   }
 };

@@ -256,6 +256,6 @@ app.use((err: any, req: Request, res: Response, next: Function) => {
   res.status(500).send("Something broke!");
 });
 
-app.listen(3000, () => {
-  console.log("Server started on http://localhost:3000");
+app.listen(configuration.port, () => {
+  console.log(`Server started on http://localhost:${configuration.port}`);
 });

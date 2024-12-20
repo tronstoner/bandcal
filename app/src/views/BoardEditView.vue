@@ -19,6 +19,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { apiFetch } from "../utils/api";
 
 interface Message {
   id?: number;
@@ -33,11 +34,7 @@ const isEditing = ref(false);
 
 const fetchMessage = async (id: number) => {
   try {
-    const response = await fetch(`/api/messages/${id}`);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch message: ${response.statusText}`);
-    }
-    message.value = await response.json();
+    message.value = await apiFetch(`/messages/${id}`);
     isEditing.value = true;
   } catch (error) {
     console.error(error);
@@ -45,17 +42,15 @@ const fetchMessage = async (id: number) => {
 };
 
 const saveMessage = async () => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(message.value),
+  };
   try {
-    const response = await fetch("/api/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(message.value),
-    });
-    if (!response.ok) {
-      throw new Error(`Failed to save message: ${response.statusText}`);
-    }
+    await apiFetch("/messages", options);
     router.push({ name: "Board" });
   } catch (error) {
     console.error(error);

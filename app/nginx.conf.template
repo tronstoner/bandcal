@@ -1,0 +1,36 @@
+# This is an Nginx configuration template for the Vue.js app.
+# It uses environment variables to configure the server settings.
+# The variables are:
+# - VITE_PORT: The port on which the Vue app will be served.
+# - VITE_BASE_PATH: The base path for the Vue app.
+
+events {}
+
+http {
+    server {
+        listen ${VITE_PORT};
+        server_name localhost;
+        charset utf-8;
+        include /etc/nginx/mime.types;
+        root /usr/share/nginx/html;
+
+        location ${VITE_BASE_PATH} {
+            alias /usr/share/nginx/html/;
+            try_files $uri $uri/ ${VITE_BASE_PATH}/index.html;
+        }
+
+        location @fallback {
+            rewrite ^ ${VITE_BASE_PATH}index.html break;
+        }
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root /usr/share/nginx/html;  # Use the same directory as root
+        }
+
+        error_page 404 /404.html;
+        location = /404.html {
+            root /usr/share/nginx/html;  # Use the same directory as root
+        }
+    }
+}

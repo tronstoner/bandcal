@@ -80,6 +80,8 @@ import { useLocalStorage } from "@vueuse/core";
 import { formatEntryText } from "../utils";
 import dayjs from "dayjs";
 
+const API_BASE_PATH = import.meta.env.VITE_API_BASE_PATH;
+
 interface Message {
   id?: number;
   name: string;
@@ -107,7 +109,9 @@ const fetchMessages = async () => {
 
   isLoading.value = true;
   try {
-    const response = await fetch(`/api/messages?cursor=${cursor.value || ""}`);
+    const response = await fetch(
+      `${API_BASE_PATH}/messages?cursor=${cursor.value || ""}`
+    );
     if (!response.ok) {
       throw new Error(`Failed to fetch messages: ${response.statusText}`);
     }
@@ -129,7 +133,7 @@ const fetchMessages = async () => {
 const quickPostMessage = async () => {
   try {
     quickPostName.value = quickPost.value.name; // Save name to local storage
-    const response = await fetch("/api/messages", {
+    const response = await fetch(`${API_BASE_PATH}/messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -164,9 +168,12 @@ const confirmDelete = (id: number) => {
 const deleteMessage = async () => {
   if (messageToDelete.value !== null) {
     try {
-      const response = await fetch(`/api/messages/${messageToDelete.value}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${API_BASE_PATH}/messages/${messageToDelete.value}`,
+        {
+          method: "DELETE",
+        }
+      );
       if (!response.ok) {
         throw new Error(`Failed to delete message: ${response.statusText}`);
       }

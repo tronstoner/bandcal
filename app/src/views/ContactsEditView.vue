@@ -37,6 +37,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { apiFetch } from "../utils/api";
 
 const router = useRouter();
 const route = useRoute();
@@ -48,28 +49,22 @@ const contact = ref({
 
 const fetchContact = async (id: number) => {
   try {
-    const response = await fetch(`/api/contacts/${id}`);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch contact: ${response.statusText}`);
-    }
-    Object.assign(contact.value, await response.json());
+    Object.assign(contact.value, await apiFetch(`/contacts/${id}`));
   } catch (error) {
     console.error(error);
   }
 };
 
 const submitForm = async () => {
-  const method = "POST";
-  const url = "/api/contacts";
   const options = {
-    method,
+    method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(contact.value),
   };
-  const response = await fetch(url, options);
-  if (response.ok) {
+  try {
+    await apiFetch("/contacts", options);
     router.push("/contacts");
-  } else {
+  } catch (error) {
     console.error("Failed to save contact");
   }
 };
@@ -89,12 +84,9 @@ const confirmDelete = () => {
 const deleteContact = async () => {
   if (contact.value.id !== null) {
     try {
-      const response = await fetch(`/api/contacts/${contact.value.id}`, {
+      await apiFetch(`/contacts/${contact.value.id}`, {
         method: "DELETE",
       });
-      if (!response.ok) {
-        throw new Error(`Failed to delete contact: ${response.statusText}`);
-      }
       router.push("/contacts");
     } catch (error) {
       console.error(error);

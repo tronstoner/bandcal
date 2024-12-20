@@ -17,6 +17,7 @@ try {
 }
 
 const defaults = {
+  port: parseInt(process.env.API_PORT || "3000"),
   database: {
     file: "../db/database.sqlite",
   },

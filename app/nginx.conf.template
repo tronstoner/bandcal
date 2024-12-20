@@ -19,10 +19,6 @@ http {
             try_files $uri $uri/ ${VITE_BASE_PATH}/index.html;
         }
 
-        location @fallback {
-            rewrite ^ ${VITE_BASE_PATH}index.html break;
-        }
-
         error_page 500 502 503 504 /50x.html;
         location = /50x.html {
             root /usr/share/nginx/html;  # Use the same directory as root

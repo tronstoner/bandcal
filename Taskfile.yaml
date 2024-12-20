@@ -14,31 +14,31 @@ tasks:
   dev:start:
     desc: Start development environment using Docker Compose.
     cmds:
-      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up
+      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal${BANDCAL_POSTFIX} up
   dev:build:
     desc: Rebuild and start the app in development mode.
     cmds:
-      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal build
+      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal${BANDCAL_POSTFIX} build
   dev:build:no-cache:
     desc: Rebuild and start the app in development mode.
     cmds:
-      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal build --no-cache
+      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal${BANDCAL_POSTFIX} build --no-cache
   prod:start:
     desc: Will start the containers in production mode.
     cmds:
-      - docker compose -p bandcal up
+      - docker compose -p bandcal${BANDCAL_POSTFIX} up
   prod:build:
     desc: Rebuild and start the app in production mode.
     cmds:
-      - docker compose -p bandcal build
+      - docker compose -p bandcal${BANDCAL_POSTFIX} build
   prod:build:no-cache:
     desc: Rebuild and start the app in production mode.
     cmds:
-      - docker compose -p bandcal build --no-cache
+      - docker compose -p bandcal${BANDCAL_POSTFIX} build --no-cache
   remove:
     desc: Remove all Docker containers and images.
     cmds:
-      - docker compose -p bandcal down --rmi all --volumes --remove-orphans
+      - docker compose -p bandcal${BANDCAL_POSTFIX} down --rmi all --volumes --remove-orphans
   stop:
     desc: Alias for `task down`.
     cmds:
@@ -46,7 +46,7 @@ tasks:
   down:
     desc: Stop all Docker containers without removing images.
     cmds:
-      - docker compose -p bandcal down
+      - docker compose -p bandcal${BANDCAL_POSTFIX} down
   default:
     desc: List all available tasks.
     cmds:

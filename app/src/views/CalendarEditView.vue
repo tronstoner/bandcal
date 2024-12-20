@@ -38,8 +38,10 @@ onMounted(async () => {
     try {
       const entry = await apiFetch(`/calendar/${date}`);
       calendarEntry.value = entry;
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      if (error.response && error.response.status !== 404) {
+        console.error(error);
+      }
     }
   }
 });

@@ -1,0 +1,5 @@
+{
+  "database": {
+    "file": "../db/database.sqlite"
+  }
+}

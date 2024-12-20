@@ -5,19 +5,21 @@ services:
       context: ./app
       dockerfile: ${BANDCAL_DOCKERFILE_VUE:-Dockerfile}
     container_name: vue-app${BANDCAL_POSTFIX}
+    env_file:
+      - ./docker/vue-app/docker.env
     restart: always
     networks:
       - bandcal-network
     volumes:
       - ./app:/app
-    environment:
-      - VUE_APP_BASE_URL=${VUE_APP_BASE_URL} # Pass VUE_APP_BASE_URL to the container
 
   api:
     build:
       context: ./api
       dockerfile: ${BANDCAL_DOCKERFILE_API:-Dockerfile}
     container_name: api${BANDCAL_POSTFIX}
+    env_file:
+      - ./docker/api/docker.env
     restart: always
     networks:
       - bandcal-network
@@ -27,12 +29,19 @@ services:
       - ./api/config/config.json:/app/config/config.json:ro
 
   nginx:
-    image: nginx:latest
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
     container_name: nginx${BANDCAL_POSTFIX}
+    env_file:
+      - ./docker/nginx/docker.env
+    environment:
+      - BANDCAL_PORT=${BANDCAL_PORT:-8080}
+      - BASE_PATH=${BASE_PATH}
     ports:
-      - "${BANDCAL_PORT:-8080}:8080" # Ensure Nginx serves everything under localhost:8080
+      - "${BANDCAL_PORT:-8080}:${BANDCAL_PORT:-8080}" # Ensure Nginx serves everything under localhost:8080
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      # - ./nginx/nginx.conf.template:/etc/nginx/nginx.conf.template:ro
       - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
     depends_on:
       - vue-app

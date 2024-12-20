@@ -11,30 +11,35 @@ tasks:
     desc: Create a test user for nginx.
     cmds:
       - "read -p 'Enter username: ' username && htpasswd -c ./nginx/.htpasswd $username"
-  start:dev:
+  dev:start:
     desc: Start development environment using Docker Compose.
     cmds:
+      # - export BANDCAL_PORT=8080 BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up
       - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up
-  start:prod:
-    desc: Start production environment using Docker Compose.
+  dev:rebuild:
+    desc: Rebuild and start the app in development mode.
     cmds:
-      - export BANDCAL_POSTFIX=666 BANDCAL_PORT=8080 && docker compose -p bandcal${BANDCAL_POSTFIX} up
+      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal build --no-cache
+  prod:start:
+    desc: Will start the containers in production mode.
+    cmds:
+      - docker compose -p bandcal up
+  prod:rebuild:
+    desc: Rebuild and start the app in production mode.
+    cmds:
+      - docker compose -p bandcal build --no-cache
   remove:
     desc: Remove all Docker containers and images.
     cmds:
-      - docker compose -p bandcal down --rmi all
+      - docker compose -p bandcal down --rmi all --volumes --remove-orphans
   stop:
+    desc: Alias for `task down`.
+    cmds:
+      - task down
+  down:
     desc: Stop all Docker containers without removing images.
     cmds:
       - docker compose -p bandcal down
-  rebuild:dev:
-    desc: Rebuild and start the app in development mode.
-    cmds:
-      - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up --build
-  rebuild:prod:
-    desc: Rebuild and start the app in production mode.
-    cmds:
-      - BANDCAL_APP_NETWORK=bandcal-network && docker compose -p bandcal up --build
   default:
     desc: List all available tasks.
     cmds:

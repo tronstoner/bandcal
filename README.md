@@ -76,7 +76,7 @@ This will build the app and start it in production mode. This is useful for test
 export BANDCAL_POSTFIX=666 BANDCAL_PORT=8080 && docker compose -p bandcal${BANDCAL_POSTFIX} up
 ```
 
-`BANDCAL_POSTFIX` is used to run multiple instances of the app on the same machine.
+`BANDCAL_POSTFIX` is used to run multiple instances of the app on the same machine, it will set the docker compose project and network to `bandcal${BANDCAL_POSTFIX}`.
 `BANDCAL_PORT` is the port the app will be available on.
 
 ### Rebuild the app

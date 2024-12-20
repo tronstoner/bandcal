@@ -1,3 +1,9 @@
+# This is an example of a Nginx configuration file for the Vue.js app with an
+# API server It is configured so that both API, as well as the Vue dev server
+# and the Vue production build is run through the same Nginx proxy. For
+# production deployment you might want to consider your own Webserver
+# configuration and proxy services directly.
+
 events {}
 
 http {
@@ -10,10 +16,10 @@ http {
     }
 
     server {
-        listen 8080;  # Nginx listens on port 8081
+        listen ${BANDCAL_PORT};  # Nginx listens on port 8080
 
         # Proxy for Vue app
-        location / {
+        location /${BASE_PATH} {
             auth_basic "Restricted Content";
             auth_basic_user_file /etc/nginx/.htpasswd;
             proxy_pass http://vue_app;  # Proxy to the Vite dev server

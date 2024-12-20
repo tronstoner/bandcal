@@ -2,29 +2,34 @@
   <div id="app">
     <nav class="menutable">
       <div class="logowrap">
-        <a href="/" id="logo">{{ appTitle || "Proberaum" }} </a>
+        <router-link to="/" id="logo">{{
+          appTitle || "Proberaum"
+        }}</router-link>
       </div>
-      <a class="menu" :class="{ active: isActive('/board') }" href="/board"
-        >Board</a
+      <router-link
+        class="menu"
+        :class="{ active: isActive('/board') }"
+        to="/board"
+        >Board</router-link
       >
-      <a
+      <router-link
         class="menu"
         :class="{ active: isActive('/calendar') }"
-        href="/calendar"
-        >Calendar</a
+        to="/calendar"
+        >Calendar</router-link
       >
-      <a
+      <router-link
         class="menu"
         :class="{ active: isActive('/contacts') }"
-        href="/contacts"
-        >Contacts</a
+        to="/contacts"
+        >Contacts</router-link
       >
-      <a
+      <router-link
         class="menu"
         :class="{ active: isActive('/logout') }"
-        href="/logout"
+        to="/logout"
         @click.prevent="logout"
-        >Logout</a
+        >Logout</router-link
       >
     </nav>
     <div class="main">

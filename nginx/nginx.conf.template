@@ -19,7 +19,7 @@ http {
         listen ${BANDCAL_PORT};  # Nginx listens on port 8080
 
         # Proxy for Vue app
-        location /${BASE_PATH} {
+        location ${VITE_BASE_PATH} {
             auth_basic "Restricted Content";
             auth_basic_user_file /etc/nginx/.htpasswd;
             proxy_pass http://vue_app;  # Proxy to the Vite dev server
@@ -35,7 +35,7 @@ http {
         }
 
         # Proxy for API requests
-        location /api/ {
+        location ${API_BASE_PATH}/ {
             auth_basic "Restricted Content";
             auth_basic_user_file /etc/nginx/.htpasswd;
             proxy_pass http://api/;  # Proxy to the API server

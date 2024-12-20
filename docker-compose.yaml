@@ -6,7 +6,7 @@ services:
       dockerfile: ${BANDCAL_DOCKERFILE_VUE:-Dockerfile}
     container_name: vue-app${BANDCAL_POSTFIX}
     env_file:
-      - ./docker/vue-app/docker.env
+      - ./.env
     restart: always
     networks:
       - bandcal-network
@@ -19,7 +19,7 @@ services:
       dockerfile: ${BANDCAL_DOCKERFILE_API:-Dockerfile}
     container_name: api${BANDCAL_POSTFIX}
     env_file:
-      - ./docker/api/docker.env
+      - ./.env
     restart: always
     networks:
       - bandcal-network
@@ -34,10 +34,10 @@ services:
       dockerfile: Dockerfile
     container_name: nginx${BANDCAL_POSTFIX}
     env_file:
-      - ./docker/nginx/docker.env
-    environment:
-      - BANDCAL_PORT=${BANDCAL_PORT:-8080}
-      - BASE_PATH=${BASE_PATH}
+      - ./.env
+    # environment:
+    #   - BANDCAL_PORT=${BANDCAL_PORT:-8080}
+    #   - VITE_BASE_PATH=${VITE_BASE_PATH:-/}
     ports:
       - "${BANDCAL_PORT:-8080}:${BANDCAL_PORT:-8080}" # Ensure Nginx serves everything under localhost:8080
     volumes:

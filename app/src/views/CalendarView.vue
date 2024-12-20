@@ -52,6 +52,7 @@
 import { ref, onMounted, watch, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { formatDate, formatEntryText } from "../utils";
+import { apiFetch } from "../utils/api";
 import dayjs from "dayjs";
 import isoWeek from "dayjs/plugin/isoWeek";
 
@@ -72,13 +73,9 @@ const currentMonthYear = computed(() => {
 
 const fetchEntries = async (startDate: string, endDate: string) => {
   try {
-    const response = await fetch(
-      `/api/calendar?startdate=${startDate}&enddate=${endDate}`
+    return await apiFetch(
+      `/calendar?startdate=${startDate}&enddate=${endDate}`
     );
-    if (!response.ok) {
-      throw new Error(`Failed to fetch entries: ${response.statusText}`);
-    }
-    return await response.json();
   } catch (error) {
     console.error(error);
     return [];

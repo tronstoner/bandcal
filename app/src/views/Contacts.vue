@@ -25,6 +25,7 @@
 import { ref, onMounted, computed } from "vue";
 import { useRouter } from "vue-router";
 import { formatEntryText } from "../utils";
+import { apiFetch } from "../utils/api";
 
 interface Contact {
   id: number;
@@ -37,11 +38,7 @@ const router = useRouter();
 
 const fetchContacts = async () => {
   try {
-    const response = await fetch("/api/contacts");
-    if (!response.ok) {
-      throw new Error(`Failed to fetch contacts: ${response.statusText}`);
-    }
-    contacts.value = await response.json();
+    contacts.value = await apiFetch("/contacts");
   } catch (error) {
     console.error(error);
   }

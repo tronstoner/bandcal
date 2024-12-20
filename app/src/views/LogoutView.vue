@@ -7,11 +7,11 @@
 
 <script lang="ts" setup>
 import { onMounted } from "vue";
+import { apiFetch } from "../utils/api";
 
 onMounted(async () => {
   try {
-    const response = await fetch("/api/ping");
-    const data = await response.text();
+    const data = await apiFetch("/ping");
     if (data === "pong") {
       window.location.href = "/";
     }

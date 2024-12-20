@@ -40,17 +40,32 @@ task setup-auth
 
 ## Configuration
 
-The configuration for the API can be found in the `api/config/config.json` file. Here is an example configuration:
+The app can be configured by setting environment variables. If you use the docker-compose setup, you will need to create .env file in the root of the project with the following content:
 
-```javascript
-{
-  "database": {
-    "file": "../db/database.sqlite"  // default
-  }
-}
+```env
+# The overall port for the application
+BANDCAL_PORT=8080
+
+# The port for the API
+API_PORT=3000
+
+# The base path for the API
+API_BASE_PATH=/api
+
+# The port for the Vite dev server
+VITE_PORT=8081
+
+# The base path for the Vite server and build
+VITE_BASE_PATH=/
+
+# The base path for the API in the Vite server
+VITE_API_BASE_PATH=/api
+
+# The title of the application
+VITE_APP_TITLE="BANDCAL"
 ```
 
-- `database.file`: Path to the SQLite database file.
+See `.env.example` and `.env.base.example` for more configuration options using different base paths (you want to serve the app under a certain path).
 
 ## Development
 

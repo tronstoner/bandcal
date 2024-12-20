@@ -15,11 +15,11 @@ tasks:
     desc: Start development environment using Docker Compose.
     cmds:
       - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal up
-  dev:rebuild:
+  dev:build:
     desc: Rebuild and start the app in development mode.
     cmds:
       - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal build
-  dev:rebuild:no-cache:
+  dev:build:no-cache:
     desc: Rebuild and start the app in development mode.
     cmds:
       - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal build --no-cache

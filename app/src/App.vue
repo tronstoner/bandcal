@@ -49,7 +49,8 @@
 </template>
 
 <script lang="ts" setup>
-const colorScheme = import.meta.env.VITE_COLOR_SCHEME || "default";
+const colorScheme = import.meta.env.VITE_APP_COLOR_SCHEME || "default";
+console.log("colorScheme", colorScheme);
 if (colorScheme === "alt") {
   import("./colors-alt.css");
 } else {

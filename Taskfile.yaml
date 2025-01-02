@@ -24,17 +24,25 @@ tasks:
     cmds:
       - export BANDCAL_DOCKERFILE_VUE=Dockerfile_dev BANDCAL_DOCKERFILE_API=Dockerfile_dev && docker compose -p bandcal${BANDCAL_POSTFIX} build --no-cache
   prod:start:
-    desc: Will start the containers in production mode.
+    desc: Will start the containers demonised in production mode.
     cmds:
-      - docker compose -p bandcal${BANDCAL_POSTFIX} up
+      - docker compose -p bandcal${BANDCAL_POSTFIX} up -d
   prod:build:
-    desc: Rebuild and start the app in production mode.
+    desc: Rebuild and start the app
     cmds:
       - docker compose -p bandcal${BANDCAL_POSTFIX} build
   prod:build:no-cache:
     desc: Rebuild and start the app in production mode.
     cmds:
       - docker compose -p bandcal${BANDCAL_POSTFIX} build --no-cache
+  prod:build:vue-app:
+    desc: Rebuild only the vue-app in production mode.
+    cmds:
+      - docker compose -p bandcal${BANDCAL_POSTFIX} build vue-app --no-cache
+  prod:build:api:
+    desc: Rebuild only the API in production mode.
+    cmds:
+      - docker compose -p bandcal${BANDCAL_POSTFIX} build api --no-cache
   remove:
     desc: Remove all Docker containers and images.
     cmds:
@@ -47,6 +55,14 @@ tasks:
     desc: Stop all Docker containers without removing images.
     cmds:
       - docker compose -p bandcal${BANDCAL_POSTFIX} down
+  ps:
+    desc: List all running Docker containers.
+    cmds:
+      - docker compose -p bandcal${BANDCAL_POSTFIX} ps
+  logs:
+    desc: Show logs for all Docker containers.
+    cmds:
+      - docker compose -p bandcal${BANDCAL_POSTFIX} logs -f
   default:
     desc: List all available tasks.
     cmds:

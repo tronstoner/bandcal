@@ -71,7 +71,13 @@ const isActive = (path: string) => {
 
 const logout = () => {
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "/", true, "Derek", "Smalls");
+  xhr.open(
+    "GET",
+    import.meta.env.VITE_BASE_PATH || "/",
+    true,
+    "Derek",
+    "Smalls"
+  );
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       router.push("/logout");

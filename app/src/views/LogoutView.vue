@@ -13,10 +13,10 @@ onMounted(async () => {
   try {
     const data = await apiFetch("/ping");
     if (data === "pong") {
-      window.location.href = "/";
+      window.location.href = import.meta.env.VITE_BASE_PATH || "/";
     }
   } catch (error) {
-    window.location.href = "/";
+    window.location.href = import.meta.env.VITE_BASE_PATH || "/";
   }
 });
 </script>

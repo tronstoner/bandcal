@@ -1,6 +1,8 @@
 :root {
   --body-background-color: #060032;
   --background-color: #f69a9a;
+  --past-color: #845555;
+  --past-background: #ffdddd;
   --button-background: #c16363;
   --button-hover-background: #722c2c;
   --button-color: white;
@@ -11,8 +13,8 @@
   --dialog-backdrop: rgba(0, 0, 0, 0.5);
   --card-background: #fff;
   --card-border: #f69a9a;
-  --add-card-background: #f69a9a;
-  --add-card-hover-background: #c16363;
+  --add-card-background: #c16464;
+  --add-card-hover-background: #722c2c;
   --menu-background: #fff;
   --menu-active-background: #f69a9a;
   --menu-active-color: #fff;

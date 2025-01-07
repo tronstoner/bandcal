@@ -103,6 +103,10 @@ html {
   min-width: 300px;
 }
 
+#app {
+  min-width: 320px;
+}
+
 form {
   margin-top: 1em;
 }
@@ -110,6 +114,7 @@ form {
 .menutable,
 .maintable {
   max-width: 1400px;
+  min-width: 320px;
   margin: 0 auto;
   text-transform: uppercase;
 }
@@ -157,6 +162,7 @@ a.menu.active {
 
 .main {
   max-width: 1400px;
+  min-width: 320px;
   margin: 0 auto;
 }
 
@@ -179,7 +185,7 @@ footer a {
     background: var(--menu-background);
     margin: 0.2em 0.3em;
     padding: 0.3em;
-    width: calc(50% - 1.2em);
+    width: calc(50% - 0.6em);
   }
 
   .logowrap {

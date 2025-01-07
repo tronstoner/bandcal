@@ -5,11 +5,15 @@
         <tr>
           <th colspan="7">
             <div class="navigation">
-              <button class="prev" @click="changeMonth(-1)">⏴⏴</button>
+              <button class="prev" @click="changeMonth(-1)">
+                <LeftArrowIcon />
+              </button>
               <button class="current" @click="goToToday">
                 {{ currentMonthYear }}
               </button>
-              <button class="next" @click="changeMonth(1)">⏵⏵</button>
+              <button class="next" @click="changeMonth(1)">
+                <RightArrowIcon />
+              </button>
             </div>
           </th>
         </tr>
@@ -55,6 +59,8 @@ import { formatDate, formatEntryText } from "../utils";
 import { apiFetch } from "../utils/api";
 import dayjs from "dayjs";
 import isoWeek from "dayjs/plugin/isoWeek";
+import LeftArrowIcon from "../components/LeftArrowIcon.vue";
+import RightArrowIcon from "../components/RightArrowIcon.vue";
 
 dayjs.extend(isoWeek);
 
@@ -178,7 +184,7 @@ onMounted(async () => {
 table {
   width: 100%;
   background: var(--background-color);
-  border-spacing: 0px; /* This sets the cellpadding */
+  border-spacing: 4px; /* This sets the cellpadding */
   border-radius: 8px;
   padding: 4px;
 }
@@ -192,13 +198,13 @@ td {
 
 td.caldate {
   border-style: solid;
-  border-color: var(--background-color);
+  border-color: transparent;
   border-width: 2px;
   font-size: 88%;
   border-collapse: collapse;
   background-color: var(--dialog-background);
   border-radius: 8px;
-  height: 7em;
+  height: 6.5em;
   width: 14.28%; /* Ensure all days have equal width without fixed width */
 }
 
@@ -257,11 +263,16 @@ td.current-day {
 .navigation {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Ensure vertical alignment */
   margin-bottom: 1rem;
   text-align: center;
 }
 .navigation button {
   margin: 0 0.2rem;
+  display: flex;
+  align-items: center; /* Center the icons vertically */
+  justify-content: center; /* Center the icons horizontally */
+  height: 2.4rem;
 }
 .navigation button.current {
   width: 100%;

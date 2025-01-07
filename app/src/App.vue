@@ -50,7 +50,6 @@
 
 <script lang="ts" setup>
 const colorScheme = import.meta.env.VITE_APP_COLOR_SCHEME || "default";
-console.log("colorScheme", colorScheme);
 if (colorScheme === "alt") {
   import("./colors-alt.css");
 } else {
@@ -88,27 +87,8 @@ const logout = () => {
 </script>
 
 <style>
-* {
-  font-family: Roboto, sans-serif;
-}
-
-*:focus {
-  outline: 0;
-}
-body,
-html {
-  background: var(--body-background-color);
-  margin: 0;
-  padding: 0;
-  min-width: 300px;
-}
-
 #app {
   min-width: 320px;
-}
-
-form {
-  margin-top: 1em;
 }
 
 .menutable,

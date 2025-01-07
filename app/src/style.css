@@ -26,25 +26,6 @@ label {
   color: var(--logo-color);
 }
 
-.calenderheader {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 0.5em;
-}
-
-.calhead {
-  display: inline-block;
-  width: 40%;
-  max-width: 300px;
-  font-size: 100%;
-  color: var(--button-color);
-  background: var(--button-background);
-  text-align: center;
-  line-height: 32px;
-  vertical-align: middle;
-  font-weight: bold;
-}
-
 a {
   color: #336;
   font-weight: bold;
@@ -54,36 +35,6 @@ a {
 
 a:hover {
   color: #66A;
-  text-decoration: none;
-}
-
-.menutable,
-.maintable {
-  max-width: 1400px;
-  margin: 0 auto;
-  text-transform: uppercase;
-}
-
-td.tablemain {
-  background: var(--menu-active-background);
-  border-radius: 8px;
-}
-
-.logowrap {
-  display: inline-block;
-  vertical-align: bottom;
-}
-
-.calendarWrap table {
-  background: var(--menu-active-background);
-}
-
-.calweekdays {
-  font-size: 100%;
-}
-
-.calendar {
-  font-size: 100%;
   text-decoration: none;
 }
 
@@ -100,10 +51,6 @@ textarea {
   background-color: var(--dialog-background);
   border-radius: 8px;
   width: 100%;
-}
-
-table td.caldate {
-  font-size: 88%;
 }
 
 .textfield {
@@ -127,18 +74,6 @@ input[type=text] {
   border-width: 3px;
 }
 
-td.caldate:hover {
-  text-decoration: none;
-  background: var(--button-background);
-  color: var(--button-color);
-  cursor: pointer;
-}
-
-td.caldate:hover a {
-  font-weight: bold;
-  color: var(--button-color);
-}
-
 button {
   font-size: 120%;
   border: none;
@@ -154,7 +89,7 @@ button {
 }
 
 button.secondary {
-  background: var(--menu-background);
+  background: var(--button-secondary);
   color: #336;
 }
 
@@ -178,87 +113,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.menutable {
-  border-collapse: collapse;
-  padding: 0 8px;
-}
-
-a.menu {
-  font-size: 120%;
-  vertical-align: bottom;
-  text-decoration: none;
-  display: inline-block;
-  padding: 0.2em 1em;
-  border-radius: 8px 8px 0px 0px;
-  background: var(--menu-background);
-  margin-right: 4px;
-}
-
-a.menu:hover,
-a.menu.active {
-  text-decoration: none;
-  background-color: var(--menu-active-background);
-  color: var(--menu-active-color);
-}
-
-.menu:hover,
-.menu.active {
-  color: var(--menu-active-color);
-}
-
-a.menu {
-  text-decoration: none;
-}
-
-#logo {
-  font-size: 300%;
-  font-weight: bold;
-  display: block;
-  white-space: nowrap;
-  color: var(--logo-color);
-  text-decoration: none;
-  padding: 0 8px 0 8px;
-  text-shadow: var(--logo-shadow) 4px 4px 0px;
-  position: relative;
-  top: 8px;
-}
-
-.weekdays {
-  font-size: 100% !important;
-}
-
-table td.currdate {
-  background-color: var(--logo-shadow);
-}
-
-@media (max-width: 640px) {
-
-  table,
-  caption,
-  tbody,
-  tfoot,
-  thead,
-  tr,
-  th,
-  td {
-    /*
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-*/
-  }
-
-  table td.caldate {
-    font-size: 77%;
-  }
-
-  .weekdays {
-    font-size: 77% !important;
-  }
-
-}
-
 @media (max-width: 850px) {
 
   .textfield a {
@@ -267,25 +121,6 @@ table td.currdate {
     overflow-wrap: break-word;
     overflow: hidden;
     display: inline-block;
-  }
-
-  a.menu {
-    font-size: 100%;
-    border-radius: 3px;
-    background: var(--menu-background);
-    margin: 0.2em 0.3em;
-    padding: 0.3em;
-    width: calc(50% - 0.6em);
-  }
-
-  .logowrap {
-    font-size: 77%;
-    display: block;
-    margin-bottom: 0.5em;
-  }
-
-  .menutable {
-    margin-bottom: 0.5em;
   }
 
 }
@@ -310,13 +145,6 @@ table td.currdate {
     overflow-wrap: break-word;
     overflow: hidden;
     display: inline-block;
-  }
-
-  a.menu {
-    border-radius: 3px;
-    background: var(--menu-background);
-    margin: 0.2em 0.3em;
-    padding: 0.3em;
   }
 
 }

@@ -5,9 +5,10 @@
   --past-background: #ffdddd;
   --button-background: #c16363;
   --button-hover-background: #722c2c;
+  --button-secondary: #eee;
   --button-color: white;
   --active-color: #c16363;
-  --danger-color: #ff1900;
+  --danger-color: #ff0000;
   --danger-hover-color: #c0392b;
   --dialog-background: #fff;
   --dialog-backdrop: rgba(0, 0, 0, 0.5);

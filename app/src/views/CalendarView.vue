@@ -1,54 +1,51 @@
 <template>
   <div class="calendar">
-    <table>
-      <thead>
-        <tr>
-          <th colspan="7">
-            <div class="navigation">
-              <button class="prev" @click="changeMonth(-1)">
-                <LeftArrowIcon />
-              </button>
-              <button class="current" @click="goToToday">
-                {{ currentMonthYear }}
-              </button>
-              <button class="next" @click="changeMonth(1)">
-                <RightArrowIcon />
-              </button>
-            </div>
-          </th>
-        </tr>
-
-        <tr>
-          <th v-for="day in daysOfWeek" :key="day" class="calendar-head">
-            {{ day }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="week in weeks" :key="week[0]?.date">
-          <td
-            v-for="day in week"
-            :key="day.date.toISOString()"
-            class="caldate"
-            :class="{
-              'other-month': day.isOtherMonth,
-              'current-day': isCurrentDay(day.date),
-              'past-date': isPastDate(day.date),
-            }"
-            @click="handleDayClick(day.date)"
-          >
-            <div>
-              <strong>{{ day.date.getDate() }}</strong>
-            </div>
-            <div
-              v-for="entry in day.entries"
-              :key="entry.id"
-              v-html="formatEntryText(entry.text)"
-            ></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="calendar-navigation">
+      <button class="prev" @click="changeMonth(-1)">
+        <LeftArrowIcon />
+      </button>
+      <button class="current" @click="goToToday">
+        {{ currentMonthYear }}
+      </button>
+      <button class="next" @click="changeMonth(1)">
+        <RightArrowIcon />
+      </button>
+    </div>
+    <div class="calendar-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th v-for="day in daysOfWeek" :key="day" class="calendar-head">
+              {{ day }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="week in weeks" :key="week[0]?.date">
+            <td
+              v-for="day in week"
+              :key="day.date.toISOString()"
+              class="caldate"
+              :class="{
+                'other-month': day.isOtherMonth,
+                'current-day': isCurrentDay(day.date),
+                'past-date': isPastDate(day.date),
+              }"
+              @click="handleDayClick(day.date)"
+            >
+              <div>
+                <strong>{{ day.date.getDate() }}</strong>
+              </div>
+              <div
+                v-for="entry in day.entries"
+                :key="entry.id"
+                v-html="formatEntryText(entry.text)"
+              ></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -181,11 +178,15 @@ onMounted(async () => {
   font-size: 100%;
 }
 
+.calendar-wrapper {
+  overflow-x: auto;
+  border-radius: 0px 0px 8px 8px;
+}
+
 table {
   width: 100%;
   background: var(--background-color);
   border-spacing: 4px; /* This sets the cellpadding */
-  border-radius: 8px;
   padding: 4px;
 }
 
@@ -206,6 +207,7 @@ td.caldate {
   border-radius: 8px;
   height: 6.5em;
   width: 14.28%; /* Ensure all days have equal width without fixed width */
+  min-width: 2rem;
 }
 
 td.caldate:hover {
@@ -260,25 +262,27 @@ td.current-day {
   background: var(--button-hover-background);
 }
 
-.navigation {
+.calendar-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center; /* Ensure vertical alignment */
-  margin-bottom: 1rem;
   text-align: center;
+  background-color: var(--background-color);
+  padding: 8px;
+  border-radius: 8px 8px 0px 0px;
 }
-.navigation button {
+.calendar-navigation button {
   margin: 0 0.2rem;
   display: flex;
   align-items: center; /* Center the icons vertically */
   justify-content: center; /* Center the icons horizontally */
-  height: 2.4rem;
+  height: 2.5rem;
 }
-.navigation button.current {
+.calendar-navigation button.current {
   width: 100%;
 }
-.navigation button.prev,
-.navigation button.next {
+.calendar-navigation button.prev,
+.calendar-navigation button.next {
   margin: 0;
   width: 100%;
 }
@@ -290,20 +294,20 @@ td.current-day {
 }
 
 @media (max-width: 600px) {
-  .navigation button.current {
+  .calendar-navigation button.current {
     font-size: 80%;
     width: 100%;
   }
-  .navigation button.prev,
-  .navigation button.next {
+  .calendar-navigation button.prev,
+  .calendar-navigation button.next {
     margin: 0;
     width: 60%;
   }
 }
 
 @media (max-width: 400px) {
-  .navigation button.prev,
-  .navigation button.next {
+  .calendar-navigation button.prev,
+  .calendar-navigation button.next {
     margin: 0;
     width: 60%;
   }

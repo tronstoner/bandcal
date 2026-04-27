@@ -77,7 +77,7 @@ See `.env.example` and `.env.base.example` for more configuration options using 
 
 To start the development environment, run:
 ```bash
-task start:dev
+task dev:start
 ```
 
 This will start the API and the app in development mode.
@@ -86,16 +86,10 @@ This will start the API and the app in development mode.
 
 To start the app in production mode, run:
 ```bash
-task start:prod
+task prod:start
 ```
 
 This will build the app and start it in production mode. This is useful for testing the app in a production-like environment.
-
-### Start in production mode with in a docker environment
-
-```bash
-export BANDCAL_POSTFIX=666 BANDCAL_PORT=8080 && docker compose -p bandcal${BANDCAL_POSTFIX} up
-```
 
 `BANDCAL_POSTFIX` is used to run multiple instances of the app on the same machine, it will set the docker compose project and network to `bandcal${BANDCAL_POSTFIX}`.
 `BANDCAL_PORT` is the port the app will be available on.
@@ -104,14 +98,14 @@ export BANDCAL_POSTFIX=666 BANDCAL_PORT=8080 && docker compose -p bandcal${BANDC
 
 To rebuild the app, run:
 ```bash
-task rebuild:app
+task prod:build:vue-app
 ```
 
 ### Rebuild the API
 
 To rebuild the API, run:
 ```bash
-task rebuild:api
+task prod:build:api
 ```
 
 ### Stop the development environment
@@ -140,7 +134,7 @@ API Ping: [http://localhost:8080/api/ping](http://localhost:8080/api/ping)
 - [ ] Add tests
 - [ ] Easier deployment
 - [ ] Clean up code
-- [ ] Make some of the UI configurable (base color scheme, titles etc)
+- [X] Make some of the UI configurable (base color scheme, titles etc)
 - [ ] Maybe improve authentication
 - [X] Don't add more features, it works as it is
 

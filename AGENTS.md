@@ -23,16 +23,31 @@ task logs           # View logs
 task ps             # List running containers
 ```
 
-For working directly on subprojects without Docker:
+**IMPORTANT:** Never run `npm` directly on the host. Both `app/` and `api/` have their own `Taskfile.yaml` with an `npm` task that runs npm inside a Docker container (using the Node version from `.nvmrc`). Always use the task wrapper:
 
 ```bash
-# Frontend (app/)
-cd app && npm run dev        # Vite dev server
-cd app && npm run build      # Type-check + production build
+# Install a package in app/
+cd app && task npm -- install <package>
 
-# Backend (api/)
-cd api && npm run dev        # ts-node-dev with hot reload
-cd api && npm run build      # TypeScript compilation
+# Update a package in app/
+cd app && task npm -- update <package>
+
+# Run npm ci in app/
+cd app && task npm:ci
+
+# Same pattern for api/
+cd api && task npm -- install <package>
+cd api && task npm:ci
+```
+
+Other sub-project tasks (also running in Docker):
+
+```bash
+cd app && task npm:dev       # Vite dev server
+cd app && task npm:build     # Type-check + production build
+
+cd api && task npm:dev       # ts-node-dev with hot reload
+cd api && task npm:build     # TypeScript compilation
 ```
 
 No test suites exist yet in either subproject.

@@ -28,5 +28,10 @@
     "@types/cors": "^2.8.17",
     "@types/lodash": "^4.17.13",
     "ts-node-dev": "^2.0.0"
+  },
+  "overrides": {
+    "typeorm": {
+      "uuid": "^14.0.0"
+    }
   }
 }

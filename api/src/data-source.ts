@@ -12,7 +12,7 @@ type DataSourceConfig = {
 
 export function createDataSource(config: DataSourceConfig) {
   return new DataSource({
-    type: "sqlite",
+    type: "better-sqlite3",
     database: config.database.file,
     synchronize: true, // Automatically synchronize database schema
     logging: true, // Enable logging for debugging

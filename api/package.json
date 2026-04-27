@@ -14,12 +14,12 @@
   "description": "",
   "dependencies": {
     "@types/express": "^5.0.0",
+    "better-sqlite3": "^12.9.0",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "lodash": "^4.17.21",
     "reflect-metadata": "^0.2.2",
-    "sqlite3": "^5.1.7",
     "ts-node": "^10.9.2",
     "typeorm": "^0.3.20",
     "typescript": "^5.7.2"
@@ -27,6 +27,13 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/lodash": "^4.17.13",
+    "@types/node": "^22.19.17",
     "ts-node-dev": "^2.0.0"
+  },
+  "_overrides_comment": "typeorm pins uuid@^11 which has CVE GHSA-w5hq-g745-h8pq (not reachable via typeorm's v4() usage). Override to ^14 for clean audit. Remove when typeorm bumps uuid natively.",
+  "overrides": {
+    "typeorm": {
+      "uuid": "^14.0.0"
+    }
   }
 }

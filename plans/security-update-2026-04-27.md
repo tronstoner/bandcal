@@ -63,12 +63,12 @@ Commit if green.
 
 Upgrade major versions one group at a time. Build after each to catch breakage early.
 
-### 2a: vite 6 → 8 + @vitejs/plugin-vue 5 → 6 + vue-tsc 2 → 3
+### 2a: vite 6 → 8 + @vitejs/plugin-vue 5 → 6
 
-These are tightly coupled — upgrade together. `vue-tsc` 3 is needed for vite 8 compatibility.
+These are tightly coupled — upgrade together. vue-tsc stays on v2 — v3 introduces stricter template ref detection that flags `boardListRef` as unused (it's used via template `ref="boardListRef"` but vue-tsc 3 doesn't recognize it).
 
 ```bash
-cd app && task npm -- install vite@latest @vitejs/plugin-vue@latest vue-tsc@latest
+cd app && task npm -- install vite@latest @vitejs/plugin-vue@latest
 ```
 
 ### 2b: @vueuse/core 12 → 14
@@ -94,6 +94,7 @@ cd app && task npm -- install eslint@latest
 ### Skipped for now
 
 - **typescript**: stay on 5.x — TS 6 is very recent, no security motivation.
+- **vue-tsc**: stay on 2.x — v3 has stricter template ref detection that requires code changes.
 - **@types/node**: stay on 22.x — matches our Node 22 runtime, no reason to go to 25.
 
 ## Step 3: Major updates — api/

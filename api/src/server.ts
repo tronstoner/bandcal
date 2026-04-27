@@ -58,10 +58,10 @@ app.get("/calendar", async (req: Request, res: Response, next: Function) => {
 
 app.get(
   "/calendar/:date",
-  async (req: Request, res: Response, next: Function) => {
+  async (req: Request<{ date: string }>, res: Response, next: Function) => {
     try {
       const repo = AppDataSource.getRepository(CalendarEntry);
-      const entry = await repo.findOneBy({ date: req.params.date as string });
+      const entry = await repo.findOneBy({ date: req.params.date });
       if (entry) {
         res.json(entry);
       } else {
@@ -92,10 +92,10 @@ app.post("/calendar", async (req: Request, res: Response, next: Function) => {
 
 app.delete(
   "/calendar/:date",
-  async (req: Request, res: Response, next: Function) => {
+  async (req: Request<{ date: string }>, res: Response, next: Function) => {
     try {
       const repo = AppDataSource.getRepository(CalendarEntry);
-      await repo.delete({ date: req.params.date as string });
+      await repo.delete({ date: req.params.date });
       res.sendStatus(200);
     } catch (error) {
       next(error);

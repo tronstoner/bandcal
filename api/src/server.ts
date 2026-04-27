@@ -61,7 +61,7 @@ app.get(
   async (req: Request, res: Response, next: Function) => {
     try {
       const repo = AppDataSource.getRepository(CalendarEntry);
-      const entry = await repo.findOneBy({ date: req.params.date });
+      const entry = await repo.findOneBy({ date: req.params.date as string });
       if (entry) {
         res.json(entry);
       } else {
@@ -95,7 +95,7 @@ app.delete(
   async (req: Request, res: Response, next: Function) => {
     try {
       const repo = AppDataSource.getRepository(CalendarEntry);
-      await repo.delete({ date: req.params.date });
+      await repo.delete({ date: req.params.date as string });
       res.sendStatus(200);
     } catch (error) {
       next(error);
